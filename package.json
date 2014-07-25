@@ -18,7 +18,7 @@
     "diet plugin",
     "diet",
     "dietjs",
-    "diet.js",
+    "diet.js"
   ],
   "bugs": {
     "url": "http://github.com/adamhalasz/diet-static/issues",
@@ -35,7 +35,7 @@
     "url": "http://adamhalasz.com/"
   },
   "dependencies": {
-    "send": ">=0.7.0",
+    "send": ">=0.7.0"
   },
   "main": "index.js",
   "engines": {
