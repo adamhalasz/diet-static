@@ -28,16 +28,16 @@ app.plugin('diet-static');
 
 // Start HTTP Server
 app.start('http://localhost:8000/');
+```
 
-// Now your app will serve every URL with a file that has a mimeType
-// and it's NOT associated with a custom route by app.get or app.post
-// relative to your root folder which by default is /path/to/your_app/static/`
+Now your app will serve every URL with a file that has a mimeType and it's NOT associated with a custom route by app.get or app.post relative to your root folder which by default is `/path/to/your_app/static/`
 
-// http://localhost:8000/people.json
-// http://localhost:8000/favicon.ico
-// http://localhost:8000/scripts/global.js
-// http://localhost:8000/styles/global.css
-// http://localhost:8000/images/logo.png
+```js
+// http://localhost:8000/people.json		--> `/path/to/your_app/static/people.json`
+// http://localhost:8000/favicon.ico		--> `/path/to/your_app/static/favicon.ico`
+// http://localhost:8000/scripts/global.js	--> `/path/to/your_app/static/scripts/global.js`
+// http://localhost:8000/styles/global.css	--> `/path/to/your_app/static/styles/global.css`
+// http://localhost:8000/images/logo.png	--> `/path/to/your_app/static/images/logo.png`
 ```
 
 ## **Config**
