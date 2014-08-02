@@ -8,10 +8,11 @@ npm install diet-static
 ```
 
 ## **Usage**
-You just need to attach it your app as a plugin. By default it will serve static files from `/path/to/your_app/static`
-```
+You just need to attach it your app as a plugin. 
+```js
 app.plugin('diet-static', configObject); // config is optional
 ```
+By default it will serve static files from `/path/to/your_app/static/`
 
 ## **Example**
 
