@@ -6,18 +6,20 @@ var mime = require('mime');
 
 module.exports.global = function($, options){
 	var root = '/static' || options.root;
-	var mimeType = mime.lookup($.url.pathname);
+	var pathname = $.url.pathname;
+	var mimeType = mime.lookup(pathname);
+	var extension = path.extname(pathname);
 	
-	// if no route was specified and mimeType exists
-	if($.noRoute && mimeType){
+	// if no route was specified there is an extension and mimeType is not binary
+	if($.noRoute && extension && mimeType != 'application/octet-stream'){
 		// set header
 		$.header('content-type', mimeType);
 		
 		// send static file
 		send($.request, $.url.pathname, { root: $.domain.path+root })
 		  .on('error', function(err) {
-		  	$.response.statusCode = err.status || 500;
-		  	$.response.end($.response.statusCode+ ' File not found.');
+		  	$.status(err.status || 500, 'File not found.');
+		  	$.return();
 		  }).pipe($.response); 
 	} else {
 		$.return();
