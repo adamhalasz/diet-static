@@ -23,11 +23,14 @@ require('diet');
 // Create App
 var app = new App();
 
+// Configure Domain
+app.domain('http://localhost:8000/');
+
 // Attach the plugin to your app
 app.plugin('diet-static');
 
 // Start HTTP Server
-app.start('http://localhost:8000/');
+app.start();
 ```
 
 Now your app will serve every URL with a file that has a mimeType and it's NOT associated with a custom route by `app.get` or `app.post` relative to your root folder which by default is `/path/to/your_app/static/`
