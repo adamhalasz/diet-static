@@ -18,13 +18,13 @@ By default it will serve static files from `/path/to/your_app/static/`
 
 ```js
 // Require Diet
-require('diet');
+var server = require('diet')
 
 // Create App
-var app = new App();
+var app = new server()
 
 // Configure Domain
-app.domain('http://localhost:8000/');
+app.domain('http://localhost:8000/')
 
 // Attach the plugin to your app
 app.plugin('diet-static');

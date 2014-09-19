@@ -3,8 +3,9 @@ var url  = require('url');
 var path = require('path');
 var send = require('send');
 var mime = require('mime');
+var options = module.parent.options;
 
-module.exports.global = function($, options){
+exports.global = function($){
 	var root = '/static' || options.root;
 	var pathname = $.url.pathname;
 	var mimeType = mime.lookup(pathname);
@@ -25,3 +26,5 @@ module.exports.global = function($, options){
 		$.return();
 	}
 }
+
+module.parent.return()
