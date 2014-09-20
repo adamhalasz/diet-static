@@ -15,6 +15,7 @@ exports.global = function($){
 	if($.noRoute && extension && mimeType != 'application/octet-stream'){
 		// set header
 		$.header('content-type', mimeType);
+		$.status(200);
 		
 		// send static file
 		send($.request, $.url.pathname, { root: $.domain.path+root })
