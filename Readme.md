@@ -8,32 +8,22 @@ npm install diet-static
 ```
 
 ## **Usage**
-You just need to attach it your app as a plugin. 
-```js
-app.plugin('diet-static', configObject); // config is optional
-```
-By default it will serve static files from `/path/to/your_app/static/`
-
-## **Example**
 
 ```js
-// Require Diet
-var server = require('diet')
 
-// Create App
-var app = new server()
+// Initialize Server
+var server = require('diet') // Require Diet
+var app = server()           // Create App
+app.listen(8000)             // Configure Domain
 
-// Configure Domain
-app.domain('http://localhost:8000/')
+// Require diet-static
+var static = require('diet-static')({ path: app.path+'/static' })
 
-// Attach the plugin to your app
-app.plugin('diet-static');
-
-// Start HTTP Server
-app.start();
+// Attach static as a global footer
+app.footer(static);
 ```
 
-Now your app will serve every URL with a file that has a mimeType and it's NOT associated with a custom route by `app.get` or `app.post` relative to your root folder which by default is `/path/to/your_app/static/`
+Now your app will serve every URL with a file that has a mimeType and it's NOT associated with a custom route by `app.get` or `app.post` relative to the path configration.
 
 ```js
 // http://localhost:8000/people.json		--> `/path/to/your_app/static/people.json`
@@ -46,15 +36,10 @@ Now your app will serve every URL with a file that has a mimeType and it's NOT a
 ## **Config**
 Configs are optional for `diet-static`.
 ```js
-app.plugin('diet-static', {
-    root: app.path+'/static' // the folder to server files from
+require('diet-static')({
+    path: app.path+'/static' // the folder to server files from
 })
 ```
-
-## **Todos**
-
-- Custom root for URL path
-- Custom error handling
 
 ## **License**
 
