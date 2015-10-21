@@ -38,12 +38,12 @@ module.exports = function(options){
 									$.header('Content-Encoding', 'gzip')
 									$.header('Vary', 'Accept-Encoding')
 									$.passed = false;
-									$.end(gzip)
+									$.response.end(gzip)
 									$.return()
 								})
 							} else {
 								$.passed = false;
-								$.end(data)
+								$.response.end(data)
 								$.return()
 							}
 						})
@@ -51,7 +51,7 @@ module.exports = function(options){
 					} else {
 						// not modified
 						$.status(304)
-						$.end()
+						$.response.end()
 						$.return()
 					}
 					
