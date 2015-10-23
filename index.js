@@ -38,11 +38,13 @@ module.exports = function(options){
 									$.header('Content-Encoding', 'gzip')
 									$.header('Vary', 'Accept-Encoding')
 									$.passed = false;
+									$.responded = true;
 									$.response.end(gzip)
 									$.return()
 								})
 							} else {
 								$.passed = false;
+								$.responded = true;
 								$.response.end(data)
 								$.return()
 							}
@@ -51,6 +53,7 @@ module.exports = function(options){
 					} else {
 						// not modified
 						$.status(304)
+						$.responded = true;
 						$.response.end()
 						$.return()
 					}
