@@ -20,7 +20,8 @@ module.exports = function(options){
 			path: '',
 			index: true,
 			showScriptName: true,
-			defaultScript: 'html'
+			defaultScript: 'html',
+			cache: 'public'
 		};
 
 		setOptions(options, opt);
@@ -39,7 +40,7 @@ module.exports = function(options){
 				if(!error){
 					$.header('Last-Modified', stats.mtime)
 					$.header('Expires', new Date(new Date().getTime() + 604800000).toUTCString())
-					$.header('Cache-Control', 'public')
+					$.header('Cache-Control', opt.cache)
 					var modified_since = new Date($.headers['if-modified-since']).getTime();
 					var last_modified = new Date(stats.mtime).getTime()
 					if(!$.headers['if-modified-since'] || last_modified > modified_since){
