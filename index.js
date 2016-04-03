@@ -10,6 +10,7 @@ module.exports = function(options){
 		var pathname = $.url.pathname;
 		var mimeType = mime.lookup(pathname);
 		var extension = path.extname(pathname);
+		var dateOffset = 604800000;
 		
 		// if no route was specified there is an extension and mimeType is not binary
 		if(extension){
@@ -19,8 +20,8 @@ module.exports = function(options){
 			var source = options.path + $.url.pathname;
 			fs.stat(source, function (error, stats) {
 				if(!error){
-					$.header('Last-Modified', stats.mtime)
-					$.header('Expires', new Date(new Date().getTime() + 604800000).toUTCString())
+					$.header('Last-Modified', new Date(stats.mtime).toUTCString())
+					$.header('Expires', new Date(new Date().getTime() + dateOffset).toUTCString())
 					$.header('Cache-Control', 'public')
 					var modified_since = new Date($.headers['if-modified-since']).getTime();
 					var last_modified = new Date(stats.mtime).getTime()
